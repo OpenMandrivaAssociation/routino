@@ -5,7 +5,7 @@
 Summary:	Router for OpenStreetMap Data
 Name:		routino
 Version:	3.3.3
-Release:	1
+Release:	2
 License:	AGPLv3+
 URL:		http://www.routino.org/
 Source0:	http://www.routino.org/download/routino-%{version}.tgz
@@ -45,6 +45,7 @@ compatible with the AGPLv3.
 %package -n %{develname}
 Summary:	Development files for %{name}
 Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{develname}
 This package contains the files required to compile applications that use
