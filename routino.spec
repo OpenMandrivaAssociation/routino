@@ -27,18 +27,32 @@ can be used as a routing tool in Marble.
 
 #--------------------------------------------------------------------
 
-%package %{libname}
+%package -n %{libname}
 Summary:	Routing library for OpenStreetMap Data
 Requires:	%{name}-data = %{version}-%{release}
 
-%description %{libname}
+%description -n %{libname}
 The Routino library is a library for finding a route between two points using
 the dataset of topographical information collected by OpenStreetMap. It can be
 used by applications to embed Routino, as long as the application's license is
 compatible with the AGPLv3.
 
-%files %{libname}
+%files -n %{libname}
 %{_libdir}/lib%{name}*.so.*
+
+#--------------------------------------------------------------------
+
+%package -n %{develname}
+Summary:	Development files for %{name}
+Requires:	%{libname} = %{version}-%{release}
+
+%description -n %{develname}
+This package contains the files required to compile applications that use
+%{name}.
+
+%files -n %{develname}
+%{_includedir}/%{name}.h
+%{_libdir}/lib%{name}*.so
 
 #--------------------------------------------------------------------
 
@@ -55,17 +69,16 @@ This package contains the architecture-independent data files used by %{name}.
 
 #--------------------------------------------------------------------
 
-%package %{develname}
-Summary:	Development files for %{name}
-Requires:	%{libname} = %{version}-%{release}
+%package doc
+Summary:	Documentation files for %{name} and %{name}
+BuildArch:	noarch
 
-%description %{develname}
-This package contains the files required to compile applications that use
+%description doc
+This package contains the architecture-independent documentation files for
 %{name}.
 
-%files %{develname}
-%{_includedir}/%{name}.h
-%{_libdir}/lib%{name}*.so
+%files doc
+%{_docdir}/%{name}/
 
 #--------------------------------------------------------------------
 
@@ -80,22 +93,6 @@ rm -rf web
 # Upstream builds but does not install extras. Don't waste build time, nor
 # bother fixing the parallel make breakage there.
 rm -rf extras
-
-#--------------------------------------------------------------------
-
-%package doc
-Summary:	Documentation files for %{name} and %{name}
-BuildArch:	noarch
-Requires:	%{libname} = %{version}-%{release}
-
-%description doc
-This package contains the architecture-independent documentation files for
-%{name}.
-
-%files doc
-%{_docdir}/%{name}/
-
-#--------------------------------------------------------------------
 
 %build
 %set_build_flags
