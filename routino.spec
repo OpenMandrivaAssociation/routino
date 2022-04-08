@@ -15,7 +15,7 @@ BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(liblzma)
 BuildRequires:	pkgconfig(zlib)
 
-Requires:	%{name}-libs = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 
 %description
 Routino is a command-line application for finding a route between two points
@@ -43,12 +43,11 @@ compatible with the AGPLv3.
 #--------------------------------------------------------------------
 
 %package data
-Summary:	Data files for %{name} and %{name}-libs
+Summary:	Data files for %{name}
 BuildArch:	noarch
 
 %description data
-This package contains the architecture-independent data files used by %{name}
-and %{name}-libs.
+This package contains the architecture-independent data files used by %{name}.
 
 %files data
 %license agpl-3.0.txt
@@ -57,12 +56,12 @@ and %{name}-libs.
 #--------------------------------------------------------------------
 
 %package %{develname}
-Summary:	Development files for %{name}-libs
-Requires:	%{name}-libs = %{version}-%{release}
+Summary:	Development files for %{name}
+Requires:	%{libname} = %{version}-%{release}
 
 %description %{develname}
 This package contains the files required to compile applications that use
-%{name}-libs.
+%{name}.
 
 %files %{develname}
 %{_includedir}/%{name}.h
@@ -85,13 +84,13 @@ rm -rf extras
 #--------------------------------------------------------------------
 
 %package doc
-Summary:	Documentation files for %{name} and %{name}-libs
+Summary:	Documentation files for %{name} and %{name}
 BuildArch:	noarch
-Requires:	%{name}-libs = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 
 %description doc
 This package contains the architecture-independent documentation files for
-%{name} and %{name}-libs.
+%{name}.
 
 %files doc
 %{_docdir}/%{name}/
