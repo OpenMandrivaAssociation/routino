@@ -11,6 +11,7 @@ URL:		https://www.routino.org/
 Source0:	http://www.routino.org/download/routino-%{version}.tgz
 # https://github.com/sharkcz/routino/commits/fedora
 Patch0:		routino-3.3-fedora.patch
+BuildRequires:	make
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(liblzma)
 BuildRequires:	pkgconfig(zlib)
